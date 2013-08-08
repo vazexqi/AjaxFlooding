@@ -4,7 +4,7 @@
   "description": "Tests whether browers will swap the request and response for AJAX when we flood the calls.",
   "main": "app.js",
   "dependencies": {
-    "connect": "~2.8.4"
+    "connect": "~2.7"
   },
   "devDependencies": {},
   "scripts": {
