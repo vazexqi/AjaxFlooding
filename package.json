@@ -1,0 +1,22 @@
+{
+  "name": "AjaxFlooding",
+  "version": "0.0.0",
+  "description": "Tests whether browers will swap the request and response for AJAX when we flood the calls.",
+  "main": "app.js",
+  "dependencies": {
+    "connect": "~2.8.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vazexqi/AjaxFlooding.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/vazexqi/AjaxFlooding/issues"
+  }
+}
