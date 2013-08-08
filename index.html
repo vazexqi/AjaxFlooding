@@ -2,10 +2,15 @@
 <script type='text/javascript'>
 
 var HOST = 'http://127.0.0.1:3000/';
+var NUM_ITERATIONS = 50;
+var API_CALLS_PER_ITERATION = 2;
 
 function checkExpectedResults(endpoint, responseText) {
   var json = JSON.parse(responseText);
-  if(json.key !== endpoint) console.error('Values swapped!');
+  if(json.key !== endpoint) {
+    console.error('Values swapped!');
+    debugger;
+  }
 }
 
 function queryWithHttp(endpoint) {
@@ -20,14 +25,24 @@ function queryWithHttp(endpoint) {
 }
 
 function startTesting() {
-  queryWithHttp('endpoint1');
-  queryWithHttp('endpoint2');
+  var i;
+  var holdOff = 100;
+
+  console.log("Begin testing!");
+
+  for(i = 0; i < NUM_ITERATIONS; i++) {
+    setTimeout(function() {
+      queryWithHttp('endpoint1');
+      queryWithHttp('endpoint2');
+    });
+  }
+  console.log("Done testing!");
 }
 
 </script>
 <body onLoad='startTesting()'>
 <div>
-  Nothing here.
+  Testing AJAX requests
 </div>
 </body>
 </html>
