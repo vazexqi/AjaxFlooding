@@ -1,0 +1,33 @@
+<html>
+<script type='text/javascript'>
+
+var HOST = 'http://127.0.0.1:3000/';
+
+function checkExpectedResults(endpoint, responseText) {
+  var json = JSON.parse(responseText);
+  if(json.key !== endpoint) console.error('Values swapped!');
+}
+
+function queryWithHttp(endpoint) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4) {
+      checkExpectedResults(endpoint, xhr.responseText);
+    }
+  }
+  xhr.open('GET', HOST + endpoint, true);
+  xhr.send();
+}
+
+function startTesting() {
+  queryWithHttp('endpoint1');
+  queryWithHttp('endpoint2');
+}
+
+</script>
+<body onLoad='startTesting()'>
+<div>
+  Nothing here.
+</div>
+</body>
+</html>
