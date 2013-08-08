@@ -2,14 +2,25 @@
 <script type='text/javascript'>
 
 var HOST = 'http://127.0.0.1:3000/';
-var NUM_ITERATIONS = 50;
+var NUM_ITERATIONS = 200;
 var API_CALLS_PER_ITERATION = 2;
+
+var totalSucessfulCalls = 0;
+var totalSwappedCalls = 0;
 
 function checkExpectedResults(endpoint, responseText) {
   var json = JSON.parse(responseText);
   if(json.key !== endpoint) {
+    totalSwappedCalls++;
     console.error('Values swapped!');
     debugger;
+  } else {
+    totalSucessfulCalls++;
+    if(totalSucessfulCalls === NUM_ITERATIONS * API_CALLS_PER_ITERATION) {
+      console.log('Done testing!');
+      console.log('Successful calls: ' + totalSucessfulCalls);
+      console.log('Swapped calls: ' + totalSwappedCalls);
+    }
   }
 }
 
@@ -26,7 +37,7 @@ function queryWithHttp(endpoint) {
 
 function startTesting() {
   var i;
-  var holdOff = 100;
+  var holdOff = 10;
 
   console.log("Begin testing!");
 
@@ -34,9 +45,9 @@ function startTesting() {
     setTimeout(function() {
       queryWithHttp('endpoint1');
       queryWithHttp('endpoint2');
-    });
+    }, holdOff);
   }
-  console.log("Done testing!");
+
 }
 
 </script>
