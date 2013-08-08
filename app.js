@@ -24,15 +24,15 @@ http.createServer(app).listen(3000)
 
 function endPoint1() {
   return {
-    'key' : 'endPoint1',
-    'data': 'endPoint1Data'
+    'key' : 'endpoint1',
+    'data': 'endpoint1Data'
   };
 }
 
 function endPoint2() {
   return {
-    'key' : 'endPoint2',
-    'data': 'endPoint2Data'
+    'key' : 'endpoint2',
+    'data': 'endpoint2Data'
   };
 }
 
